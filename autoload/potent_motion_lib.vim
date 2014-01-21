@@ -10,7 +10,11 @@ function! potent_motion_lib#MoveCursor(pattern, flags, syntaxName)
   call search('\v' . a:pattern, a:flags)
 
   if <SID>SyntaxMismatch(a:syntaxName)
-    return potent_motion_lib#MoveCursor(a:pattern, a:flags, a:syntaxName)
+    try
+      return potent_motion_lib#MoveCursor(a:pattern, a:flags, a:syntaxName)
+    catch /Function call depth is higher/
+      echom 'Could not find pattern'
+    endtry
   endif
 endfunction
 
