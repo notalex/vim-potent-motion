@@ -51,7 +51,12 @@ endfunction
   endfunction
 
   function! s:SelectLines(quantity)
-    execute 'normal! V' . a:quantity . 'j'
+    normal! V
+
+    if a:quantity
+      execute 'normal! ' . a:quantity . 'j'
+    endif
+
     normal! g_
   endfunction
 
