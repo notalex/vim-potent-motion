@@ -56,8 +56,6 @@ endfunction
     if a:quantity
       execute 'normal! ' . a:quantity . 'j'
     endif
-
-    normal! g_
   endfunction
 
   function! s:GotoSectionStart()
