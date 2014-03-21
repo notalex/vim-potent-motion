@@ -18,8 +18,8 @@ function! potent_motion_lib#MoveCursor(pattern, flags, syntaxName)
   endif
 endfunction
 
-function! potent_motion_lib#SelectAround()
-  call <SID>GotoSectionStart()
+function! potent_motion_lib#SelectAround(mappable_key)
+  call <SID>GotoSectionStart(a:mappable_key)
 
   let l:total_lines = <SID>MoveToEndAndReturnTotalLines()
 
@@ -27,16 +27,16 @@ function! potent_motion_lib#SelectAround()
     let l:total_lines += 1
   endif
 
-  call <SID>GotoSectionStart()
+  call <SID>GotoSectionStart(a:mappable_key)
   call <SID>SelectLines(l:total_lines)
 endfunction
 
-function! potent_motion_lib#SelectWithin()
-  call <SID>GotoSectionStart()
+function! potent_motion_lib#SelectWithin(mappable_key)
+  call <SID>GotoSectionStart(a:mappable_key)
 
   let l:inner_lines = <SID>MoveToEndAndReturnTotalLines() - 2
 
-  call <SID>GotoSectionStart()
+  call <SID>GotoSectionStart(a:mappable_key)
   " Ensure that cursor remains where the deleted section began.
   normal! j^
   call <SID>SelectLines(l:inner_lines)
@@ -58,8 +58,8 @@ endfunction
     endif
   endfunction
 
-  function! s:GotoSectionStart()
-    normal j[f
+  function! s:GotoSectionStart(mappable_key)
+    execute 'normal j[' . a:mappable_key
   endfunction
 
   function! s:MoveToEndAndReturnTotalLines()

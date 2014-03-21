@@ -1,1 +1,1 @@
-call PotentMotionMap('<it\s', 'rubyDoBlock')
+call PotentMotionMap('f', '<it\s', 'rubyDoBlock')

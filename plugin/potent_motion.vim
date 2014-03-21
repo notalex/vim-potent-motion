@@ -1,13 +1,13 @@
-function! PotentMotionMap(pattern, syntaxName)
+function! PotentMotionMap(mappable_key, pattern, syntaxName)
   let b:pattern = a:pattern
   let b:syntaxName = a:syntaxName
 
-  nnoremap <silent> <buffer> ]f :call potent_motion_lib#MoveCursor(b:pattern, '', b:syntaxName)<CR>
-  nnoremap <silent> <buffer> [f :call potent_motion_lib#MoveCursor(b:pattern, 'b', b:syntaxName)<CR>
+  execute 'nnoremap <silent> <buffer> ]' . a:mappable_key . " :call potent_motion_lib#MoveCursor('" . b:pattern . "', '', '" . b:syntaxName . "')<CR>"
+  execute 'nnoremap <silent> <buffer> [' . a:mappable_key . " :call potent_motion_lib#MoveCursor('" . b:pattern . "', 'b', '" . b:syntaxName . "')<CR>"
 
-  onoremap <silent> af :<C-U>call potent_motion_lib#SelectAround()<CR>
-  vnoremap <silent> af :<C-U>call potent_motion_lib#SelectAround()<CR>
+  execute "onoremap <silent> a" . a:mappable_key . " :<C-U>call potent_motion_lib#SelectAround('" . a:mappable_key . "')<CR>"
+  execute "vnoremap <silent> a" . a:mappable_key . " :<C-U>call potent_motion_lib#SelectAround('" . a:mappable_key . "')<CR>"
 
-  onoremap <silent> if :<C-U>call potent_motion_lib#SelectWithin()<CR>
-  vnoremap <silent> if :<C-U>call potent_motion_lib#SelectWithin()<CR>
+  execute "onoremap <silent> i" . a:mappable_key . " :<C-U>call potent_motion_lib#SelectWithin('" . a:mappable_key . "')<CR>"
+  execute "vnoremap <silent> i" . a:mappable_key . " :<C-U>call potent_motion_lib#SelectWithin('" . a:mappable_key . "')<CR>"
 endfunction

@@ -1,1 +1,1 @@
-call PotentMotionMap('<f\w*!*\s', 'vimFuncKey')
+call PotentMotionMap('f', '<f\w*!*\s', 'vimFuncKey')

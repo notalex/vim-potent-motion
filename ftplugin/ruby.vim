@@ -1,1 +1,1 @@
-call PotentMotionMap('<def\s', 'rubyDefine')
+call PotentMotionMap('f', '<def\s', 'rubyDefine')
