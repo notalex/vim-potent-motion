@@ -7,7 +7,7 @@ endif
 "}}}
 
 function! potent_motion_lib#MoveCursor(pattern, flags, syntaxName)
-  call search('\v' . a:pattern, a:flags)
+  call search('\v' . a:pattern, a:flags . 's')
 
   if <SID>SyntaxMismatch(a:syntaxName)
     try
